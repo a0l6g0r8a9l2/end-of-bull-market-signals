@@ -2,16 +2,18 @@
 FROM python:3.9-slim
 
 # Set the working directory for the application
-WORKDIR /app
+WORKDIR /src
+
+# No binary .pyc files
+ENV PYTHONDONTWRITEBYTECODE=1
+# For pretty prints
+ENV PYTHONUNBUFFERED=1
 
 # Copy requirements.txt
-COPY requirements.txt .
-RUN pip install -r requirements.txt
+COPY requirements.txt requirements.txt 
+RUN pip install --no-cache-dir --upgrade -r requirements.txt
 
-COPY . .
-
-# Expose the port where your application listens
-EXPOSE 8000
+COPY ./app app
 
 # Set the command to execute your application
-CMD ["python", "main.py"]
+# CMD ["python", "main.py"]

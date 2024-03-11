@@ -1,8 +1,8 @@
 import time
 import schedule
-from database import Base, engine, SessionLocal
+from app.database import Base, engine, SessionLocal
 from services.yt_channels import get_views_and_subscribers
-from schemas import Channel
+from app.schemas import Channel
 
 # Create database tables if they don't exist
 Base.metadata.create_all(bind=engine)
