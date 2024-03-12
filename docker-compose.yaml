@@ -47,7 +47,7 @@ services:
       - db
     command: bash -c 'while !<dev/tcp/postgres/5432; do sleep 1; done; python main.py'
     volumes:
-      - ./app:src/app
+      - ./app:/src/app # bug
     restart: always
     env_file:
       - .env
